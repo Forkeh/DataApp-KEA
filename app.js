@@ -3,19 +3,22 @@
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  const jimmy = await getCharacterData('/data/jimmy.json');
-  console.log(jimmy);
+  const jimmy = await getCharacterData(
+    "https://raw.githubusercontent.com/Forkeh/South-Park-App/main/data/jimmy.json"
+  );
+  const heather = await getCharacterData(
+    "https://raw.githubusercontent.com/Benjamin-Harris1/Data-app/main/data/heather.json"
+  );
+  const jack = await getCharacterData(
+    "https://raw.githubusercontent.com/YawHB/South_Park_Project/main/data/jack.json"
+  );
   showCharacter(jimmy);
-  showCharacter(jimmy);
-  showCharacter(jimmy);
-  showCharacter(jimmy);
-  showCharacter(jimmy);
-  showCharacter(jimmy);
+  showCharacter(heather);
+  showCharacter(jack);
+  
 }
 
-//TODO:
 async function getCharacterData(url) {
-  console.log("GET DATA");
 const response = await fetch(url);
 const data = await response.json();
 return data
@@ -45,7 +48,6 @@ function showCharacter(character) {
 }
 
 function showModal(character) {
-  // console.log('SHOW DIALOG');
   document.querySelector("dialog").showModal();
   showModalCharacter(character);
 }
