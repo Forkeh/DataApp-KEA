@@ -1,28 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@200&family=Nunito:wght@300&family=Open+Sans:wght@600&display=swap");
+
 /*----------- General styling /*-----------*/
 :root {
   --yellow: rgb(237, 209, 0);
+  --light-brown: rgb(229, 153, 0);
+  --dark-brown: rgb(186, 124, 0);
+  --light-green: rgb(151, 255, 135);
 }
 
 body {
   margin: 0;
+  background-image: url("images/southpark_background.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  font-family: "Heebo", sans-serif;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+}
+
+h2 {
+  font-family: "Nunito", sans-serif;
 }
 
 /*----------- Page grid styling /*-----------*/
 
 .page-header {
   grid-area: header;
-  background-color: var(--yellow);
-  text-align: center;
   padding: 10px 0;
+  text-align: center;
+  background-image: linear-gradient(#ffe100, #d28500);
+  border-bottom: solid 3px;
 }
 .page-main {
   grid-area: main;
 }
 .page-footer {
   grid-area: footer;
-  background-color: var(--yellow);
-  text-align: center;
   padding: 10px 0;
+  text-align: center;
+  background-image: linear-gradient(#d28500, #ffe100);
+  border-top: solid 3px;
 }
 
 .page-grid {
@@ -36,9 +55,22 @@ body {
 }
 
 /*----------- Character grid styling /*-----------*/
+article img {
+  display: block;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article h2 {
+  border: solid 2px black;
+  border-radius: 20px;
+  background-color: rgb(147, 79, 0);
+  text-align: center;
+  color: #ffe8c0;
+}
 .char-grid-container {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
   gap: 1em;
   padding: 1em;
@@ -69,52 +101,74 @@ body {
 }
 
 .char-grid-container > article {
-  background-color: rgb(154, 77, 0);
+  background-color: var(--dark-brown);
+
   padding: 1em;
-  border: solid red;
+  border: solid rgb(37, 19, 0);
   border-radius: 1em;
   transition: 0.5s;
   box-shadow: 0px 0px 3px black;
 }
 
 .char-grid-container > article:hover {
-  background-color: rgb(187, 93, 0);
-  box-shadow: 4px 4px 12px black;
-  transform: scale(101%);
- 
+  background-color: var(--light-brown);
+  box-shadow: 2px 2px 6px black;
+  transform: scale(101%) rotate(1deg);
 }
-
-article > img {
-    display: block;
-    height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
-
 
 /*----------- Modal window styling /*-----------*/
 
 dialog {
-    border-radius: 20px;
-    width: 700px;
+  border-radius: 20px;
+  width: 600px;
+  background-color: var(--light-brown);
+  box-shadow: 5px 5px 12px black;
 }
 
 .dialog-left {
-    grid-area: dialog-left;
+  grid-area: dialog-left;
 }
 .dialog-right {
-    grid-area: dialog-right;
+  grid-area: dialog-right;
+  padding: 1em;
 }
 .dialog-bottom {
-    grid-area: dialog-bottom;
+  grid-area: dialog-bottom;
+  padding: 1em;
+  text-align: center;
 }
 
 .dialog-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: 
-    'dialog-left dialog-right'
-    'dialog-bottom dialog-bottom'
-    ;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "dialog-left dialog-right"
+    "dialog-bottom dialog-bottom";
+}
+
+dialog img {
+  height: 200px;
+}
+
+/*----------- Keyframes /*-----------*/
+
+.open-modal {
+  animation-name: open-modal;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.06, 1.16, 0.68, 1.17);
+  animation-fill-mode: forwards;
+  image-rendering: optimizeSpeed;
+}
+
+@keyframes open-modal {
+  0% {
+    opacity: 0%;
+    transform: scale(0%) rotate(-30deg);
+    box-shadow: 0px 0px 0px black;
+  }
+  100% {
+    transform: scale(100%);
+    box-shadow: 4px 4px 20px black;
+  }
 }

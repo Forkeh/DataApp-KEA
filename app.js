@@ -6,22 +6,27 @@ async function initApp() {
   const jimmy = await getCharacterData(
     "https://raw.githubusercontent.com/Forkeh/South-Park-App/main/data/jimmy.json"
   );
-  const heather = await getCharacterData(
-    "https://raw.githubusercontent.com/Benjamin-Harris1/Data-app/main/data/heather.json"
+  const cartman = await getCharacterData(
+    "https://raw.githubusercontent.com/Bindholt/Data-Projekt/main/data/cartman.json"
   );
   const jack = await getCharacterData(
     "https://raw.githubusercontent.com/YawHB/South_Park_Project/main/data/jack.json"
   );
   showCharacter(jimmy);
-  showCharacter(heather);
+  showCharacter(cartman);
+  showCharacter(jimmy);
+  showCharacter(cartman);
   showCharacter(jack);
-  
+  showCharacter(cartman);
+  showCharacter(jack);
+  showCharacter(jimmy);
+  showCharacter(jack);
 }
 
 async function getCharacterData(url) {
-const response = await fetch(url);
-const data = await response.json();
-return data
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
 }
 
 function showCharacter(character) {
@@ -29,7 +34,7 @@ function showCharacter(character) {
   const insertHTML = /*html*/ `
   <article>
   <img src="${character.image}"/>
-  <h2>Name: ${character.name}</h2>
+  <h2>${character.name}</h2>
   <p>Age: ${character.age}</p>
   <p>${character.name} is voiced by ${character.voicedBy}</p>
   </article>
@@ -53,6 +58,8 @@ function showModal(character) {
 }
 
 function showModalCharacter(character) {
+  document.querySelector("#dialog-window").classList.add("open-modal");
+
   // HTML to be insterted
   document.querySelector(".dialog-image").src = character.image;
   document.querySelector(".dialog-name").textContent = character.name;
