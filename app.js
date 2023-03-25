@@ -2,9 +2,14 @@
 
 window.addEventListener("load", initApp);
 
-changeViewMode();
 
 async function initApp() {
+
+  changeViewMode();
+
+  parallaxBackground();
+
+
   const jimmy = await getCharacterData(
     "https://raw.githubusercontent.com/Forkeh/South-Park-App/main/data/jimmy.json"
   );
@@ -18,6 +23,10 @@ async function initApp() {
   showCharacterTabel(cartman);
   showCharacterTabel(jack);
   showCharacterTabel(jimmy);
+  showCharacterTabel(jimmy);
+  showCharacterTabel(cartman);
+  showCharacterTabel(jack);
+  showCharacterTabel(jimmy);
   showCharacterGrid(cartman);
   showCharacterGrid(jimmy);
   showCharacterGrid(cartman);
@@ -26,6 +35,18 @@ async function initApp() {
   showCharacterGrid(jack);
   showCharacterGrid(jimmy);
   showCharacterGrid(jack);
+  showCharacterGrid(cartman);
+  showCharacterGrid(jimmy);
+  showCharacterGrid(cartman);
+}
+
+function parallaxBackground() {
+  window.addEventListener("scroll", function () {
+    console.log("PARALLAX SCROLL");
+    const parallaxBg = document.querySelector(".bg-parallax");
+    const scrollPosition = window.scrollY;
+    parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
+  });
 }
 
 function changeViewMode() {
@@ -130,9 +151,9 @@ function showModalCharacter(character) {
   document.querySelector(".dialog-religion").textContent = character.religion;
   document.querySelector(".dialog-catchphrase").textContent =
     character.catchPhrase;
-  document.querySelector(".dialog-firstappearence").textContent =
+  document.querySelector(".dialog-firstappearance").textContent =
     character.firstAppearance;
-  document.querySelector(".dialog-appearences").textContent =
+  document.querySelector(".dialog-appearances").textContent =
     character.appearances;
   document.querySelector(".dialog-episodes").textContent = character.episodes;
 }

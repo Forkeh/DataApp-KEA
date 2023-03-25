@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <title>South Park App</title>
   </head>
   <body class="page-grid">
+    <div class="bg-parallax">HELLO</div>
+    <!-------- Header -------->
     <header class="page-header">
       <h1>South Park App</h1>
     </header>
+
     <main class="page-main">
+      <!-------- Grid/tabel switch button -------->
       <div class="btn-container">
         <button id="switch-show-mode-btn">Show Table</button>
       </div>
+
+      <!-------- Characters grid -------->
       <section id="characters-grid" class="char-grid-container">
         <!-- Inserts character grid html here -->
       </section>
+
+      <!-------- Characters Tabel -------->
       <section id="characters-tabel" class="char-tabel-container hidden">
         <table>
           <thead>
@@ -33,27 +42,29 @@
           </tbody>
         </table>
       </section>
+
+      <!-------- Modal window -------->
        <dialog id="dialog-window">
         <div class="dialog-grid">
           <div class="dialog-left">
             <img class="dialog-image" src="" alt="IMAGE HERE">
+            <em>"<span class="dialog-catchphrase"> CATCHPHRASE</span>"</em>
           </div>
           <div class="dialog-right">
-            <p>Name: <span class="dialog-name">NAME</span></p>
-            <p>Nickname: <span class="dialog-nickname"></span></p>
-            <p>School grade: <span class="dialog-schoolgrade"></span></p>
-            <p>Occupation: <span class="dialog-occupation"></span></p>
-            <p>Voiced by: <span class="dialog-voicedby"></span></p>
+            <p><strong>Name: </strong><span class="dialog-name">NAME</span></p>
+            <p><strong>Nickname: </strong> <span class="dialog-nickname">NICKNAME</span></p>
+            <p><strong>School grade: </strong> <span class="dialog-schoolgrade"></span></p>
+            <p><strong>Occupation: </strong> <span class="dialog-occupation">OCCUPATION</span></p>
+            <p><strong>Voiced by: </strong> <span class="dialog-voicedby">VOICED BY</span></p>
             <p><h3>Personal info</h3></p>
             <p><ul>
-              <li>Gender: <span class="dialog-gender"></span></li>
-              <li>Hair color: <span class="dialog-haircolor"></span></li>
-              <li>Age: <span class="dialog-age"></span></li>
-              <li>Religion: <span class="dialog-religion"></span></li>
-              <li>Catchphrase: <span class="dialog-catchphrase"></span></li>
-              <li>First appearence: <span class="dialog-firstappearence"></span></li>
-              <li>Appearences: <span class="dialog-appearences"></span></li>
-              <li>Episodes: <span class="dialog-episodes"></span></li>
+              <li><strong>Gender:</strong> <span class="dialog-gender">GENDER</span></li>
+              <li><strong>Hair color:</strong> <span class="dialog-haircolor">HAIR COLOR</span></li>
+              <li><strong>Age:</strong> <span class="dialog-age">AGE</span></li>
+              <li><strong>Religion:</strong> <span class="dialog-religion">RELIGION</span></li>
+              <li><strong>First appearance:</strong> <span class="dialog-firstappearance">FIRST APPEARANCE</span></li>
+              <li><strong>Appearances:</strong> <span class="dialog-appearances">APPEARANCES</span></li>
+              <li><strong>Episodes:</strong> <span class="dialog-episodes">EPISODES</span></li>
             </ul></p>
           </div>
         <div class="dialog-bottom">
@@ -62,6 +73,8 @@
         </div>
       </dialog>
     </main>
+
+    <!-------- Footer -------->
     <footer class="page-footer"><h2>Made by BB</h2></footer>
     <script src="app.js"></script>
   </body>

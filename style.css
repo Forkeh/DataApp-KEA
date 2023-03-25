@@ -11,13 +11,10 @@
   --border: solid rgb(37, 19, 0);
 }
 
+
+
 body {
   margin: 0;
-  background-image: url("images/southpark_background.jpg");
-  filter: blur(20%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
   font-family: "Heebo", sans-serif;
   line-height: 1.5rem;
 }
@@ -56,6 +53,20 @@ button:active {
   background-color: #2cff96;
   color: var(--light-yellow);
   transition: 0.05s;
+}
+
+.bg-parallax {
+   background-image: url("images/southpark_background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
 }
 
 /*----------- Page grid styling /*-----------*/
@@ -218,8 +229,15 @@ dialog {
   box-shadow: 5px 5px 12px black;
 }
 
+dialog img {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
+
 .dialog-left {
   grid-area: dialog-left;
+  text-align: center;
 }
 .dialog-right {
   grid-area: dialog-right;
@@ -237,10 +255,6 @@ dialog {
   grid-template-areas:
     "dialog-left dialog-right"
     "dialog-bottom dialog-bottom";
-}
-
-dialog img {
-  height: 200px;
 }
 
 /*----------- Keyframes /*-----------*/
