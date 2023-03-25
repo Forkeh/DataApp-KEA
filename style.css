@@ -14,8 +14,10 @@
 body {
   margin: 0;
   background-image: url("images/southpark_background.jpg");
-  background-position: center;
+  filter: blur(20%);
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
   font-family: "Heebo", sans-serif;
   line-height: 1.5rem;
 }
@@ -39,6 +41,7 @@ button {
   border: var(--border);
   box-shadow: 1px 1px 5px black;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 button:hover {
@@ -73,6 +76,7 @@ button:active {
   text-align: center;
   background-image: linear-gradient(#d28500, #ffe100);
   border-top: solid 3px;
+  margin-top: 2rem;
 }
 
 .page-grid {
@@ -88,34 +92,51 @@ button:active {
 .btn-container {
   text-align: center;
   padding: 1rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
 /*----------- Character grid styling /*-----------*/
-article img {
+.char-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.char-grid-container article {
+  background-color: var(--brown);
+  padding: 1em;
+  border: var(--border);
+  border-radius: 1em;
+  transition: 0.5s;
+  box-shadow: 0px 0px 3px black;
+  cursor: pointer;
+}
+
+.char-grid-container article:hover {
+  background-color: var(--light-brown);
+  box-shadow: 2px 2px 6px black;
+  transform: scale(101%) rotate(1deg);
+}
+
+.char-grid-container article img {
   display: block;
   height: 150px;
-  width: auto;
-  object-fit: cover;
+  width: 150px;
+  object-fit: contain;
   margin-left: auto;
   margin-right: auto;
 }
 
-article h2 {
+.char-grid-container article h2 {
   border: solid 2px black;
   border-radius: 20px;
   padding: 0.3rem;
   background-color: var(--dark-brown);
   text-align: center;
   color: var(--light-yellow);
-}
-.char-grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
-  /* padding: 1em; */
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
 }
 
 @media (min-width: 600px) {
@@ -142,21 +163,6 @@ article h2 {
   }
 }
 
-.char-grid-container > article {
-  background-color: var(--brown);
-  padding: 1em;
-  border: var(--border);
-  border-radius: 1em;
-  transition: 0.5s;
-  box-shadow: 0px 0px 3px black;
-}
-
-.char-grid-container > article:hover {
-  background-color: var(--light-brown);
-  box-shadow: 2px 2px 6px black;
-  transform: scale(101%) rotate(1deg);
-}
-
 /*----------- Character grid styling /*-----------*/
 table {
   width: 90%;
@@ -168,7 +174,6 @@ table {
   border-radius: 20px;
   border: solid 3px black;
   box-shadow: 2px 2px 10px black;
-  margin-bottom: 2rem;
   margin-top: 1rem;
 }
 
@@ -193,6 +198,7 @@ tr.char-table-row:hover {
   background-color: var(--light-brown);
   box-shadow: 2px 2px 6px black;
   transform: scale(101%);
+  cursor: pointer;
 }
 
 td {
