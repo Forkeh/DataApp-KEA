@@ -2,6 +2,8 @@
 
 window.addEventListener("load", initApp);
 
+changeViewMode();
+
 async function initApp() {
   const jimmy = await getCharacterData(
     "https://raw.githubusercontent.com/Forkeh/South-Park-App/main/data/jimmy.json"
@@ -12,15 +14,40 @@ async function initApp() {
   const jack = await getCharacterData(
     "https://raw.githubusercontent.com/YawHB/South_Park_Project/main/data/jack.json"
   );
-  showCharacter(jimmy);
-  showCharacter(cartman);
-  showCharacter(jimmy);
-  showCharacter(cartman);
-  showCharacter(jack);
-  showCharacter(cartman);
-  showCharacter(jack);
-  showCharacter(jimmy);
-  showCharacter(jack);
+  showCharacterTabel(jimmy);
+  showCharacterTabel(cartman);
+  showCharacterTabel(jack);
+  showCharacterTabel(jimmy);
+  showCharacterGrid(cartman);
+  showCharacterGrid(jimmy);
+  showCharacterGrid(cartman);
+  showCharacterGrid(jack);
+  showCharacterGrid(cartman);
+  showCharacterGrid(jack);
+  showCharacterGrid(jimmy);
+  showCharacterGrid(jack);
+}
+
+function changeViewMode() {
+  console.log("CHANGE VIEW MODE");
+  let tableViewMode = false;
+  document
+    .querySelector("#switch-show-mode-btn")
+    .addEventListener("click", function () {
+      if (tableViewMode === false) {
+        document.querySelector("#characters-grid").classList.add("hidden");
+        document.querySelector("#characters-tabel").classList.remove("hidden");
+        document.querySelector("#switch-show-mode-btn").textContent =
+          "Show Grid";
+        tableViewMode = true;
+      } else {
+        document.querySelector("#characters-grid").classList.remove("hidden");
+        document.querySelector("#characters-tabel").classList.add("hidden");
+        document.querySelector("#switch-show-mode-btn").textContent =
+          "Show Table";
+        tableViewMode = false;
+      }
+    });
 }
 
 async function getCharacterData(url) {
@@ -28,8 +55,36 @@ async function getCharacterData(url) {
   const data = await response.json();
   return data;
 }
+function showCharacterTabel(character) {
+  // HTML to be inserted
+  const insertHTML = /*html*/ `
+  <tr class='char-table-row'>
+  <td class='image-column'>
+  <img src="${character.image}"/>
+  </td>
+  <td>
+  ${character.name}
+  </td>
+  <td>
+  ${character.age}
+  </td>
+  <td>
+  ${character.gender}
+  </td>
+  </tr>
+  `;
 
-function showCharacter(character) {
+  // Inserts HTML
+  document.querySelector("tbody").insertAdjacentHTML("beforeend", insertHTML);
+
+  document
+    .querySelector("tbody tr:last-child")
+    .addEventListener("click", function () {
+      showModal(character);
+    });
+}
+
+function showCharacterGrid(character) {
   // HTML to be inserted
   const insertHTML = /*html*/ `
   <article>
@@ -42,7 +97,7 @@ function showCharacter(character) {
 
   // Inserts HTML
   document
-    .querySelector("#characters")
+    .querySelector("#characters-grid")
     .insertAdjacentHTML("beforeend", insertHTML);
 
   document

@@ -2,10 +2,13 @@
 
 /*----------- General styling /*-----------*/
 :root {
-  --yellow: rgb(237, 209, 0);
+  --light-yellow: #ffe8c0;
+  --brown: rgb(186, 124, 0);
+  --brown2: rgb(173, 115, 0);
   --light-brown: rgb(229, 153, 0);
-  --dark-brown: rgb(186, 124, 0);
+  --dark-brown: rgb(147, 79, 0);
   --light-green: rgb(151, 255, 135);
+  --border: solid rgb(37, 19, 0);
 }
 
 body {
@@ -14,14 +17,42 @@ body {
   background-position: center;
   background-attachment: fixed;
   font-family: "Heebo", sans-serif;
+  line-height: 1.5rem;
 }
 
 h1 {
   font-family: "Open Sans", sans-serif;
 }
 
-h2 {
+h2 h3 {
   font-family: "Nunito", sans-serif;
+  font-weight: bolder;
+}
+
+button {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #00c763;
+  padding: 0.5rem 2rem;
+  border-radius: 3rem;
+  font-size: large;
+  border: var(--border);
+  box-shadow: 1px 1px 5px black;
+  transition: 0.5s;
+}
+
+button:hover {
+  transform: scale(105%) rotate(2deg);
+  box-shadow: 3px 3px 10px black;
+  background-color: #00de6f;
+}
+
+button:active {
+  transform: scale(95%) rotate(-2deg);
+  box-shadow: 1px 1px 10px rgb(114, 114, 114);
+  background-color: #2cff96;
+  color: var(--light-yellow);
+  transition: 0.05s;
 }
 
 /*----------- Page grid styling /*-----------*/
@@ -45,7 +76,7 @@ h2 {
 }
 
 .page-grid {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 1fr;
   grid-template-rows: 100px 1fr 100px;
   grid-template-areas:
@@ -54,10 +85,18 @@ h2 {
     "footer";
 }
 
+.btn-container {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
 /*----------- Character grid styling /*-----------*/
 article img {
   display: block;
   height: 150px;
+  width: auto;
+  object-fit: cover;
   margin-left: auto;
   margin-right: auto;
 }
@@ -65,15 +104,18 @@ article img {
 article h2 {
   border: solid 2px black;
   border-radius: 20px;
-  background-color: rgb(147, 79, 0);
+  padding: 0.3rem;
+  background-color: var(--dark-brown);
   text-align: center;
-  color: #ffe8c0;
+  color: var(--light-yellow);
 }
 .char-grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
-  padding: 1em;
+  /* padding: 1em; */
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
 
 @media (min-width: 600px) {
@@ -101,10 +143,9 @@ article h2 {
 }
 
 .char-grid-container > article {
-  background-color: var(--dark-brown);
-
+  background-color: var(--brown);
   padding: 1em;
-  border: solid rgb(37, 19, 0);
+  border: var(--border);
   border-radius: 1em;
   transition: 0.5s;
   box-shadow: 0px 0px 3px black;
@@ -114,6 +155,52 @@ article h2 {
   background-color: var(--light-brown);
   box-shadow: 2px 2px 6px black;
   transform: scale(101%) rotate(1deg);
+}
+
+/*----------- Character grid styling /*-----------*/
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border: solid 3px black;
+  box-shadow: 2px 2px 10px black;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+table img {
+  height: 100px;
+}
+
+table th {
+  background-color: var(--dark-brown);
+  color: var(--light-yellow);
+}
+
+tr {
+  background-color: var(--brown);
+  transition: 0.6s;
+}
+
+tr:nth-child(even) {
+  background-color: var(--brown2);
+}
+tr.char-table-row:hover {
+  background-color: var(--light-brown);
+  box-shadow: 2px 2px 6px black;
+  transform: scale(101%);
+}
+
+td {
+  padding: 1rem;
+}
+
+.image-column {
+  width: 10%;
 }
 
 /*----------- Modal window styling /*-----------*/
@@ -171,4 +258,10 @@ dialog img {
     transform: scale(100%);
     box-shadow: 4px 4px 20px black;
   }
+}
+
+/*----------- Global visiblity /*-----------*/
+
+.hidden {
+  display: none;
 }
