@@ -64,6 +64,7 @@ function showCharacterTable(character) {
   // Inserts HTML
   document.querySelector("tbody").insertAdjacentHTML("beforeend", insertHTML);
 
+  // Add unique modal click event
   document
     .querySelector("tbody tr:last-child")
     .addEventListener("click", function () {
@@ -87,6 +88,7 @@ function showCharacterGrid(character) {
     .querySelector("#characters-grid")
     .insertAdjacentHTML("beforeend", insertHTML);
 
+  // Add unique modal click event
   document
     .querySelector("article:last-child")
     .addEventListener("click", function () {
@@ -142,9 +144,8 @@ function changeViewModeButton() {
   button.addEventListener("click", function () {
     // Switch to table mode
     if (tableViewMode === false) {
-
-      grid.classList.remove('fade-in');
-      grid.classList.add('fade-out');
+      grid.classList.remove("fade-in");
+      grid.classList.add("fade-out");
 
       setTimeout(() => {
         grid.classList.add("hidden");
@@ -158,8 +159,8 @@ function changeViewModeButton() {
 
       // Switch to grid mode
     } else {
-      table.classList.remove('fade-in');
-      table.classList.add('fade-out');
+      table.classList.remove("fade-in");
+      table.classList.add("fade-out");
 
       setTimeout(() => {
         table.classList.add("hidden");
