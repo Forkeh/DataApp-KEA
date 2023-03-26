@@ -69,13 +69,19 @@ button:active {
 
 .page-header {
   grid-area: header;
-  padding: 10px 0;
+  padding: 5px 0;
   text-align: center;
   background-image: url("images/header_background.svg");
   background-size: 100% 600px;
   background-repeat: no-repeat;
   position: relative;
   filter: drop-shadow(0px 3px 5px black);
+}
+
+.page-header h1 {
+  color: var(--light-yellow);
+  transform: rotate(-3deg);
+  filter: drop-shadow(2px 2px 1px black);
 }
 
 .page-main {
@@ -90,7 +96,7 @@ button:active {
   background-size: 100% 500px;
   background-position: bottom;
   background-repeat: no-repeat;
-  filter: drop-shadow(0px -3px 5px black)
+  filter: drop-shadow(0px -3px 5px black);
 }
 
 .page-grid {
@@ -221,6 +227,7 @@ tr.char-table-row:hover {
   box-shadow: 2px 2px 6px black;
   transform: scale(101%);
   cursor: pointer;
+  transition: 0.2s;
 }
 
 tr.char-table-row:active {
@@ -296,13 +303,6 @@ dialog img {
   }
 }
 
-/*----------- Global visiblity /*-----------*/
-.hidden {
-  display: none;
-}
-
-/*----------- Fade animations /*-----------*/
-
 .fade-in {
   animation-name: fade-in;
   animation-duration: 0.1s;
@@ -341,4 +341,9 @@ dialog img {
     opacity: 0%;
     transform: scale(97%);
   }
+}
+
+/*----------- Global visiblity /*-----------*/
+.hidden {
+  display: none;
 }

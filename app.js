@@ -38,7 +38,9 @@ async function initApp() {
 }
 
 async function getCharacterData(url) {
+  // Fetches data - have to use await
   const response = await fetch(url);
+  // Parses data into json format - have to use await
   const data = await response.json();
   return data;
 }
@@ -97,11 +99,14 @@ function showCharacterGrid(character) {
 }
 
 function showModal(character) {
+  // Shows modal dialog with built in function
   document.querySelector("dialog").showModal();
+  // Sends character object to fill in dialog detail
   showModalCharacter(character);
 }
 
 function showModalCharacter(character) {
+  // Open modal animation
   document.querySelector("#dialog-window").classList.add("open-modal");
 
   // HTML to be insterted
@@ -127,9 +132,12 @@ function showModalCharacter(character) {
 }
 
 function parallaxBackground() {
+  // Selects background when scrolling
   window.addEventListener("scroll", function () {
     const parallaxBg = document.querySelector(".bg-parallax");
+    // current Y position is saved to variable
     const scrollPosition = window.scrollY;
+    // Background is moved slightly
     parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
   });
 }
