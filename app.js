@@ -137,18 +137,36 @@ function changeViewModeButton() {
   const grid = document.querySelector("#characters-grid");
   const table = document.querySelector("#characters-table");
   const button = document.querySelector("#switch-show-mode-btn");
+  const fadeSpeed = 100;
 
   button.addEventListener("click", function () {
+    // Switch to table mode
     if (tableViewMode === false) {
-      grid.classList.add("hidden");
-      table.classList.remove("hidden");
+
+      grid.classList.remove('fade-in');
+      grid.classList.add('fade-out');
+
+      setTimeout(() => {
+        grid.classList.add("hidden");
+        grid.classList.remove("fade-out");
+        table.classList.remove("hidden");
+        table.classList.add("fade-in");
+      }, fadeSpeed);
 
       button.textContent = "Show Grid";
       tableViewMode = true;
-    } else {
 
-      table.classList.add("hidden");
-      grid.classList.remove("hidden");
+      // Switch to grid mode
+    } else {
+      table.classList.remove('fade-in');
+      table.classList.add('fade-out');
+
+      setTimeout(() => {
+        table.classList.add("hidden");
+        table.classList.remove("fade-out");
+        grid.classList.remove("hidden");
+        grid.classList.add("fade-in");
+      }, fadeSpeed);
 
       button.textContent = "Show Table";
       tableViewMode = false;
