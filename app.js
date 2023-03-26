@@ -147,7 +147,7 @@ function changeViewModeButton() {
   const grid = document.querySelector("#characters-grid");
   const table = document.querySelector("#characters-table");
   const button = document.querySelector("#switch-show-mode-btn");
-  const fadeSpeed = 100;
+  const fadeSpeed = 200;
 
   button.addEventListener("click", function () {
     // Switch to table mode
@@ -156,6 +156,8 @@ function changeViewModeButton() {
       grid.classList.add("fade-out");
 
       setTimeout(() => {
+        // grid.offsetWidth;
+        table.offsetWidth;
         grid.classList.add("hidden");
         grid.classList.remove("fade-out");
         table.classList.remove("hidden");
@@ -171,6 +173,8 @@ function changeViewModeButton() {
       table.classList.add("fade-out");
 
       setTimeout(() => {
+        // table.offsetWidth;
+        grid.offsetWidth;
         table.classList.add("hidden");
         table.classList.remove("fade-out");
         grid.classList.remove("hidden");
