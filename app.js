@@ -2,13 +2,10 @@
 
 window.addEventListener("load", initApp);
 
-
 async function initApp() {
-
-  changeViewMode();
+  changeViewModeButton();
 
   parallaxBackground();
-
 
   const jimmy = await getCharacterData(
     "https://raw.githubusercontent.com/Forkeh/South-Park-App/main/data/jimmy.json"
@@ -19,14 +16,14 @@ async function initApp() {
   const jack = await getCharacterData(
     "https://raw.githubusercontent.com/YawHB/South_Park_Project/main/data/jack.json"
   );
-  showCharacterTabel(jimmy);
-  showCharacterTabel(cartman);
-  showCharacterTabel(jack);
-  showCharacterTabel(jimmy);
-  showCharacterTabel(jimmy);
-  showCharacterTabel(cartman);
-  showCharacterTabel(jack);
-  showCharacterTabel(jimmy);
+  showCharacterTable(jimmy);
+  showCharacterTable(cartman);
+  showCharacterTable(jack);
+  showCharacterTable(jimmy);
+  showCharacterTable(jimmy);
+  showCharacterTable(cartman);
+  showCharacterTable(jack);
+  showCharacterTable(jimmy);
   showCharacterGrid(cartman);
   showCharacterGrid(jimmy);
   showCharacterGrid(cartman);
@@ -38,37 +35,6 @@ async function initApp() {
   showCharacterGrid(cartman);
   showCharacterGrid(jimmy);
   showCharacterGrid(cartman);
-}
-
-function parallaxBackground() {
-  window.addEventListener("scroll", function () {
-    console.log("PARALLAX SCROLL");
-    const parallaxBg = document.querySelector(".bg-parallax");
-    const scrollPosition = window.scrollY;
-    parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
-  });
-}
-
-function changeViewMode() {
-  console.log("CHANGE VIEW MODE");
-  let tableViewMode = false;
-  document
-    .querySelector("#switch-show-mode-btn")
-    .addEventListener("click", function () {
-      if (tableViewMode === false) {
-        document.querySelector("#characters-grid").classList.add("hidden");
-        document.querySelector("#characters-tabel").classList.remove("hidden");
-        document.querySelector("#switch-show-mode-btn").textContent =
-          "Show Grid";
-        tableViewMode = true;
-      } else {
-        document.querySelector("#characters-grid").classList.remove("hidden");
-        document.querySelector("#characters-tabel").classList.add("hidden");
-        document.querySelector("#switch-show-mode-btn").textContent =
-          "Show Table";
-        tableViewMode = false;
-      }
-    });
 }
 
 async function getCharacterData(url) {
@@ -76,7 +42,7 @@ async function getCharacterData(url) {
   const data = await response.json();
   return data;
 }
-function showCharacterTabel(character) {
+function showCharacterTable(character) {
   // HTML to be inserted
   const insertHTML = /*html*/ `
   <tr class='char-table-row'>
@@ -156,4 +122,36 @@ function showModalCharacter(character) {
   document.querySelector(".dialog-appearances").textContent =
     character.appearances;
   document.querySelector(".dialog-episodes").textContent = character.episodes;
+}
+
+function parallaxBackground() {
+  window.addEventListener("scroll", function () {
+    const parallaxBg = document.querySelector(".bg-parallax");
+    const scrollPosition = window.scrollY;
+    parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
+  });
+}
+
+function changeViewModeButton() {
+  let tableViewMode = false; // false is grid, true is table
+  const grid = document.querySelector("#characters-grid");
+  const table = document.querySelector("#characters-table");
+  const button = document.querySelector("#switch-show-mode-btn");
+
+  button.addEventListener("click", function () {
+    if (tableViewMode === false) {
+      grid.classList.add("hidden");
+      table.classList.remove("hidden");
+
+      button.textContent = "Show Grid";
+      tableViewMode = true;
+    } else {
+
+      table.classList.add("hidden");
+      grid.classList.remove("hidden");
+
+      button.textContent = "Show Table";
+      tableViewMode = false;
+    }
+  });
 }
