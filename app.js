@@ -7,39 +7,18 @@ async function initApp() {
 
   parallaxBackground();
 
-  const jimmy = await getCharacterData(
-    "https://raw.githubusercontent.com/Forkeh/South-Park-App/main/data/jimmy.json"
+  const characterList = await getCharacterData(
+    "https://cederdorff.github.io/dat-js/05-data/southpark.json"
   );
-  const cartman = await getCharacterData(
-    "https://raw.githubusercontent.com/Bindholt/Data-Projekt/main/data/cartman.json"
-  );
-  const jack = await getCharacterData(
-    "https://raw.githubusercontent.com/YawHB/South_Park_Project/main/data/jack.json"
-  );
-  showCharacterTable(jimmy);
-  showCharacterTable(cartman);
-  showCharacterTable(jack);
-  showCharacterTable(jimmy);
-  showCharacterTable(jimmy);
-  showCharacterTable(cartman);
-  showCharacterTable(jack);
-  showCharacterTable(jimmy);
-  showCharacterGrid(cartman);
-  showCharacterGrid(jimmy);
-  showCharacterGrid(cartman);
-  showCharacterGrid(jack);
-  showCharacterGrid(cartman);
-  showCharacterGrid(jack);
-  showCharacterGrid(jimmy);
-  showCharacterGrid(jack);
-  showCharacterGrid(cartman);
-  showCharacterGrid(jimmy);
-  showCharacterGrid(cartman);
+
+  characterList.forEach(showCharacterGrid);
+  characterList.forEach(showCharacterTable);
+  
 }
 
-async function getCharacterData(url) {
+async function getCharacterData(dataSource) {
   // Fetches data - have to use await
-  const response = await fetch(url);
+  const response = await fetch(dataSource);
   // Parses data into json format - have to use await
   const data = await response.json();
   return data;

@@ -107,6 +107,7 @@ button:active {
 
 .page-main {
   grid-area: main;
+  overflow: hidden;
 }
 .page-footer {
   grid-area: footer;
