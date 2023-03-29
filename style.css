@@ -132,6 +132,10 @@ button {
   cursor: pointer;
 }
 
+#switch-filter-mode-btn {
+  filter: hue-rotate(20deg);
+}
+
 button:hover {
   transform: scale(105%) rotate(2deg);
   box-shadow: 3px 3px 10px black;

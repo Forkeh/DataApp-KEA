@@ -59,8 +59,8 @@ function showCharacterTable(character) {
   <td>
   ${character.gender}
   </td>
-  <td>
-  ${character.appearances}
+  <td class='appearances-column'>
+  ${character.appearances > 0 ? character.appearances : "Unknown"}
   </td>
   </tr>
   `;
@@ -82,8 +82,14 @@ function showCharacterGrid(character) {
   <article>
   <img src="${character.image}"/>
   <h2>${character.name}</h2>
-  <p>Age: ${character.age}</p>
-  <p>${character.name} is voiced by ${character.voicedBy}</p>
+  <p>${character.name} is a ${character.age} year old ${
+    character.age > 11 ? "man" : "kid"
+  } and has appeared ${
+    character.appearances > 0
+      ? `${character.appearances} times.`
+      : "an unknown amount of times."
+  }</p>
+  <p>${character.name} is voiced by ${character.voicedBy}.</p>
   </article>
   `;
 
@@ -132,8 +138,6 @@ function showModalCharacter(character) {
     character.appearances;
   document.querySelector(".dialog-episodes").textContent = character.episodes;
 }
-
-
 
 function changeFilterModeButton() {
   const grid = document.querySelector("#characters-grid");
