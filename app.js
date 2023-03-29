@@ -7,13 +7,26 @@ async function initApp() {
 
   parallaxBackground();
 
-  const characterList = await getCharacterData(
+  let characterList = await getCharacterData(
     "https://cederdorff.github.io/dat-js/05-data/southpark.json"
   );
 
-  characterList.forEach(showCharacterGrid);
-  characterList.forEach(showCharacterTable);
-  
+  // characterList = characterList.sort(sortAppearances);
+
+  for (const character of characterList) {
+    showCharacterGrid(character);
+    showCharacterTable(character);
+  }
+  // characterList.forEach(showCharacterGrid);
+  // characterList.forEach(showCharacterTable);
+}
+
+function sortAge(obj1, obj2) {
+  return obj1.age - obj2.age;
+}
+
+function sortAppearances(obj1, obj2) {
+  return obj2.appearances - obj1.appearances;
 }
 
 async function getCharacterData(dataSource) {
@@ -23,6 +36,7 @@ async function getCharacterData(dataSource) {
   const data = await response.json();
   return data;
 }
+
 function showCharacterTable(character) {
   // HTML to be inserted
   const insertHTML = /*html*/ `
