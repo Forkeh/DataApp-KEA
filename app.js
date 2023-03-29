@@ -16,7 +16,14 @@ async function initApp() {
   populateGridAndTable(data);
 }
 
-//
+async function getCharacterData(dataSource) {
+  // Fetches data - have to use await
+  const response = await fetch(dataSource);
+  // Parses data into json format - have to use await
+  const data = await response.json();
+  return data;
+}
+
 function populateGridAndTable(array) {
   for (const character of array) {
     showCharacterGrid(character);
@@ -25,22 +32,6 @@ function populateGridAndTable(array) {
   // Alternative method
   // characterList.forEach(showCharacterGrid);
   // characterList.forEach(showCharacterTable);
-}
-
-function sortAge(obj1, obj2) {
-  return obj2.age - obj1.age;
-}
-
-function sortAppearances(obj1, obj2) {
-  return obj2.appearances - obj1.appearances;
-}
-
-async function getCharacterData(dataSource) {
-  // Fetches data - have to use await
-  const response = await fetch(dataSource);
-  // Parses data into json format - have to use await
-  const data = await response.json();
-  return data;
 }
 
 function showCharacterTable(character) {
@@ -139,38 +130,13 @@ function showModalCharacter(character) {
   document.querySelector(".dialog-episodes").textContent = character.episodes;
 }
 
-function changeFilterModeButton() {
-  const grid = document.querySelector("#characters-grid");
-  const tableBody = document.querySelector("#table-body");
-  const button = document.querySelector("#switch-filter-mode-btn");
-
-  button.addEventListener("click", function () {
-    // Get text content from button
-    let buttonText = button.textContent;
-    // Empty grid and table HTML
-    grid.innerHTML = "";
-    tableBody.innerHTML = "";
-    // If it includes Age, sort characters by age value
-    if (buttonText.includes("Age")) {
-      button.textContent = "Filter by Appearences";
-      data = data.sort(sortAge);
-      populateGridAndTable(data);
-
-      // If it includes Appearences, sort characters by appearences value
-    } else if (buttonText.includes("Appearences")) {
-      button.textContent = "Filter by Age";
-      data = data.sort(sortAppearances);
-      populateGridAndTable(data);
-    }
-  });
-}
-
 function changeViewModeButton() {
   let tableViewMode = false; // false is grid, true is table
+  const fadeSpeed = 200;
   const grid = document.querySelector("#characters-grid");
   const table = document.querySelector("#characters-table");
   const button = document.querySelector("#switch-show-mode-btn");
-  const fadeSpeed = 200;
+
 
   button.addEventListener("click", function () {
     // Switch to table mode
@@ -179,7 +145,6 @@ function changeViewModeButton() {
       grid.classList.add("fade-out");
 
       setTimeout(() => {
-        // grid.offsetWidth;
         table.offsetWidth;
         grid.classList.add("hidden");
         grid.classList.remove("fade-out");
@@ -196,7 +161,6 @@ function changeViewModeButton() {
       table.classList.add("fade-out");
 
       setTimeout(() => {
-        // table.offsetWidth;
         grid.offsetWidth;
         table.classList.add("hidden");
         table.classList.remove("fade-out");
@@ -208,6 +172,40 @@ function changeViewModeButton() {
       tableViewMode = false;
     }
   });
+}
+
+function changeFilterModeButton() {
+  const grid = document.querySelector("#characters-grid");
+  const tableBody = document.querySelector("#table-body");
+  const button = document.querySelector("#switch-filter-mode-btn");
+
+  button.addEventListener("click", function () {
+    // Get text content from button
+    let buttonText = button.textContent;
+    // Empty grid and table HTML
+    grid.innerHTML = "";
+    tableBody.innerHTML = "";
+    // If it includes Age, sort characters by age value
+    if (buttonText.includes("Age")) {
+      button.textContent = "Filter by Appearances";
+      data = data.sort(sortAge);
+      populateGridAndTable(data);
+
+      // If it includes Appearances, sort characters by appearances value
+    } else if (buttonText.includes("Appearances")) {
+      button.textContent = "Filter by Age";
+      data = data.sort(sortAppearances);
+      populateGridAndTable(data);
+    }
+  });
+}
+
+function sortAge(obj1, obj2) {
+  return obj2.age - obj1.age;
+}
+
+function sortAppearances(obj1, obj2) {
+  return obj2.appearances - obj1.appearances;
 }
 
 function parallaxBackground() {

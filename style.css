@@ -3,9 +3,9 @@
 /*----------- General styling /*-----------*/
 :root {
   --light-yellow: #ffe8c0;
-  --brown: rgb(186, 124, 0);
-  --brown2: rgb(173, 115, 0);
-  --light-brown: rgb(229, 153, 0);
+  --brown: rgb(197, 131, 0);
+  --brown2: rgb(189, 126, 0);
+  --light-brown: rgb(247, 165, 0);
   --dark-brown: rgb(147, 79, 0);
   --light-green: rgb(151, 255, 135);
   --border: solid rgb(37, 19, 0);
@@ -41,8 +41,6 @@ a:hover {
   font-size: 1.6rem;
   color: var(--light-green);
 }
-
-
 
 .bg-parallax {
   background-image: url("images/southpark_background.jpg");
@@ -113,11 +111,11 @@ a:hover {
 /*----------- Buttons styling /*-----------*/
 
 #buttons-container {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 1rem auto 2rem auto;
-  width: 50%;
-  display: grid;
-  
+  width: 30%;
+  min-width: 450px;
 }
 
 button {
@@ -157,10 +155,14 @@ button:active {
   gap: 1em;
   margin-left: 2.5rem;
   margin-right: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .char-grid-container article {
-  background-color: var(--brown);
+  /* background-color: var(--brown); */
+  background: linear-gradient(45deg, var(--brown), var(--light-brown), var(--brown));
+  background-size: 300%;
+  background-position: right;
   padding: 1em;
   border: var(--border);
   border-radius: 1em;
@@ -170,9 +172,10 @@ button:active {
 }
 
 .char-grid-container article:hover {
-  background-color: var(--light-brown);
+  /* background-color: var(--light-brown); */
   box-shadow: 2px 2px 6px black;
   transform: scale(101%) rotate(1deg);
+  background-position: left;
 }
 
 .char-grid-container article:active {
@@ -192,12 +195,16 @@ button:active {
 }
 
 .char-grid-container article h2 {
-  border: solid 2px black;
-  border-radius: 20px;
   padding: 0.3rem;
-  background-color: var(--dark-brown);
-  text-align: center;
   color: var(--light-yellow);
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(116, 116, 116, 0),
+    var(--dark-brown),
+    rgba(116, 116, 116, 0)
+  );
+  text-shadow: 1px 1px 2px black;
 }
 
 @media (min-width: 600px) {
@@ -226,10 +233,7 @@ button:active {
 
 /*----------- Character table styling /*-----------*/
 .char-table-container {
-  margin-top: 1rem;
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-
+  margin: 1rem 2.5rem;
 }
 
 table {
@@ -287,8 +291,10 @@ td {
 dialog {
   border-radius: 20px;
   width: 600px;
-  height: 700px;
-  background-color: var(--light-brown);
+  height: fit-content;
+  max-height: 800px;
+  /* background-color: var(--light-brown); */
+  background: linear-gradient(45deg, var(--light-brown), var(--brown));
   box-shadow: 5px 5px 12px black;
 }
 
