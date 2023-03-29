@@ -5,7 +5,6 @@ let data;
 window.addEventListener("load", initApp);
 
 async function initApp() {
-
   changeViewModeButton();
   changeFilterModeButton();
   parallaxBackground();
@@ -15,19 +14,21 @@ async function initApp() {
   );
 
   populateGridAndTable(data);
-  // characterList.forEach(showCharacterGrid);
-  // characterList.forEach(showCharacterTable);
 }
 
+//
 function populateGridAndTable(array) {
   for (const character of array) {
     showCharacterGrid(character);
     showCharacterTable(character);
   }
+  // Alternative method
+  // characterList.forEach(showCharacterGrid);
+  // characterList.forEach(showCharacterTable);
 }
 
 function sortAge(obj1, obj2) {
-  return obj1.age - obj2.age;
+  return obj2.age - obj1.age;
 }
 
 function sortAppearances(obj1, obj2) {
@@ -57,6 +58,9 @@ function showCharacterTable(character) {
   </td>
   <td>
   ${character.gender}
+  </td>
+  <td>
+  ${character.appearances}
   </td>
   </tr>
   `;
@@ -129,16 +133,7 @@ function showModalCharacter(character) {
   document.querySelector(".dialog-episodes").textContent = character.episodes;
 }
 
-function parallaxBackground() {
-  // Selects background when scrolling
-  window.addEventListener("scroll", function () {
-    const parallaxBg = document.querySelector(".bg-parallax");
-    // current Y position is saved to variable
-    const scrollPosition = window.scrollY;
-    // Background is moved slightly
-    parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
-  });
-}
+
 
 function changeFilterModeButton() {
   const grid = document.querySelector("#characters-grid");
@@ -148,20 +143,19 @@ function changeFilterModeButton() {
   button.addEventListener("click", function () {
     // Get text content from button
     let buttonText = button.textContent;
+    // Empty grid and table HTML
+    grid.innerHTML = "";
+    tableBody.innerHTML = "";
     // If it includes Age, sort characters by age value
     if (buttonText.includes("Age")) {
       button.textContent = "Filter by Appearences";
-      data = data.sort(sortAppearances);
-      grid.innerHTML = "";
-      tableBody.innerHTML = "";
+      data = data.sort(sortAge);
       populateGridAndTable(data);
 
       // If it includes Appearences, sort characters by appearences value
     } else if (buttonText.includes("Appearences")) {
       button.textContent = "Filter by Age";
-      data = data.sort(sortAge);
-      grid.innerHTML = "";
-      tableBody.innerHTML = "";
+      data = data.sort(sortAppearances);
       populateGridAndTable(data);
     }
   });
@@ -209,5 +203,16 @@ function changeViewModeButton() {
       button.textContent = "Show Table";
       tableViewMode = false;
     }
+  });
+}
+
+function parallaxBackground() {
+  // Selects background when scrolling
+  window.addEventListener("scroll", function () {
+    const parallaxBg = document.querySelector(".bg-parallax");
+    // current Y position is saved to variable
+    const scrollPosition = window.scrollY;
+    // Background is moved slightly
+    parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
   });
 }

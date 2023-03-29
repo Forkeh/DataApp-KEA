@@ -16,9 +16,10 @@
     </header>
 
     <main class="page-main">
-      <!-------- Grid/table switch button -------->
-      <div class="btn-container">
-        <button id="switch-show-mode-btn">Show Table</button>
+      <!-------- Grid/table switch/filter buttons -------->
+      <div id="buttons-container">
+          <button id="switch-show-mode-btn">Show Table</button>
+          <button id="switch-filter-mode-btn">Filter by Age</button>
       </div>
 
       <!-------- Characters grid -------->
@@ -35,9 +36,10 @@
               <th><h3>Name</h3></th>
               <th><h3>Age</h3></th>
               <th><h3>Gender</h3></th>
+              <th><h3>Appearances</h3></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table-body">
             <!-- Inserts character grid html here -->
           </tbody>
         </table>

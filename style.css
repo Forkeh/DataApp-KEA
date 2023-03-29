@@ -42,32 +42,7 @@ a:hover {
   color: var(--light-green);
 }
 
-button {
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #00c763;
-  padding: 0.5rem 2rem;
-  border-radius: 3rem;
-  font-size: large;
-  border: var(--border);
-  box-shadow: 1px 1px 5px black;
-  transition: 0.5s;
-  cursor: pointer;
-}
 
-button:hover {
-  transform: scale(105%) rotate(2deg);
-  box-shadow: 3px 3px 10px black;
-  background-color: #00de6f;
-}
-
-button:active {
-  transform: scale(95%) rotate(-2deg);
-  box-shadow: 1px 1px 10px rgb(114, 114, 114);
-  background-color: #2cff96;
-  color: var(--light-yellow);
-  transition: 0.05s;
-}
 
 .bg-parallax {
   background-image: url("images/southpark_background.jpg");
@@ -135,11 +110,40 @@ button:active {
     "footer";
 }
 
-.btn-container {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+/*----------- Buttons styling /*-----------*/
+
+#buttons-container {
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem auto 2rem auto;
+  width: 50%;
+  display: grid;
+  
+}
+
+button {
+  margin: 0 auto 0 auto;
+  background-color: #00c763;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  font-size: large;
+  border: var(--border);
+  box-shadow: 1px 1px 5px black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(105%) rotate(2deg);
+  box-shadow: 3px 3px 10px black;
+  background-color: #00de6f;
+}
+
+button:active {
+  transform: scale(95%) rotate(-2deg);
+  box-shadow: 1px 1px 10px rgb(114, 114, 114);
+  background-color: #2cff96;
+  color: var(--light-yellow);
+  transition: 0.05s;
 }
 
 /*----------- Character grid styling /*-----------*/
