@@ -279,6 +279,7 @@ td {
 dialog {
   border-radius: 20px;
   width: 600px;
+  height: 700px;
   background-color: var(--light-brown);
   box-shadow: 5px 5px 12px black;
 }
