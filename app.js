@@ -1,24 +1,29 @@
 "use strict";
 
+let data;
+
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  changeViewModeButton();
 
+  changeViewModeButton();
+  changeFilterModeButton();
   parallaxBackground();
 
-  let characterList = await getCharacterData(
+  data = await getCharacterData(
     "https://cederdorff.github.io/dat-js/05-data/southpark.json"
   );
 
-  // characterList = characterList.sort(sortAppearances);
+  populateGridAndTable(data);
+  // characterList.forEach(showCharacterGrid);
+  // characterList.forEach(showCharacterTable);
+}
 
-  for (const character of characterList) {
+function populateGridAndTable(array) {
+  for (const character of array) {
     showCharacterGrid(character);
     showCharacterTable(character);
   }
-  // characterList.forEach(showCharacterGrid);
-  // characterList.forEach(showCharacterTable);
 }
 
 function sortAge(obj1, obj2) {
@@ -132,6 +137,33 @@ function parallaxBackground() {
     const scrollPosition = window.scrollY;
     // Background is moved slightly
     parallaxBg.style.transform = "translateY(" + scrollPosition * 0.9 + "px)";
+  });
+}
+
+function changeFilterModeButton() {
+  const grid = document.querySelector("#characters-grid");
+  const tableBody = document.querySelector("#table-body");
+  const button = document.querySelector("#switch-filter-mode-btn");
+
+  button.addEventListener("click", function () {
+    // Get text content from button
+    let buttonText = button.textContent;
+    // If it includes Age, sort characters by age value
+    if (buttonText.includes("Age")) {
+      button.textContent = "Filter by Appearences";
+      data = data.sort(sortAppearances);
+      grid.innerHTML = "";
+      tableBody.innerHTML = "";
+      populateGridAndTable(data);
+
+      // If it includes Appearences, sort characters by appearences value
+    } else if (buttonText.includes("Appearences")) {
+      button.textContent = "Filter by Age";
+      data = data.sort(sortAge);
+      grid.innerHTML = "";
+      tableBody.innerHTML = "";
+      populateGridAndTable(data);
+    }
   });
 }
 
