@@ -130,7 +130,7 @@ button {
   cursor: pointer;
 }
 
-#switch-filter-mode-btn {
+#switch-sort-mode-btn {
   filter: hue-rotate(20deg);
 }
 

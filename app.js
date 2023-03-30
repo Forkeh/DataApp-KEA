@@ -74,7 +74,7 @@ function showCharacterGrid(character) {
   <img src="${character.image}"/>
   <h2>${character.name}</h2>
   <p>${character.name} is a ${character.age} year old ${
-    character.age > 11 ? "man" : "kid"
+    character.age > 11 ? "adult" : "kid"
   } and has appeared ${
     character.appearances > 0
       ? `${character.appearances} times.`
@@ -137,7 +137,6 @@ function changeViewModeButton() {
   const table = document.querySelector("#characters-table");
   const button = document.querySelector("#switch-show-mode-btn");
 
-
   button.addEventListener("click", function () {
     // Switch to table mode
     if (tableViewMode === false) {
@@ -177,24 +176,30 @@ function changeViewModeButton() {
 function changeFilterModeButton() {
   const grid = document.querySelector("#characters-grid");
   const tableBody = document.querySelector("#table-body");
-  const button = document.querySelector("#switch-filter-mode-btn");
+  const button = document.querySelector("#switch-sort-mode-btn");
 
   button.addEventListener("click", function () {
     // Get text content from button
     let buttonText = button.textContent;
+
     // Empty grid and table HTML
     grid.innerHTML = "";
     tableBody.innerHTML = "";
+
     // If it includes Age, sort characters by age value
     if (buttonText.includes("Age")) {
-      button.textContent = "Filter by Appearances";
+      button.textContent = "Sort by Appearances";
+
       data = data.sort(sortAge);
+
       populateGridAndTable(data);
 
       // If it includes Appearances, sort characters by appearances value
     } else if (buttonText.includes("Appearances")) {
-      button.textContent = "Filter by Age";
+      button.textContent = "Sort by Age";
+
       data = data.sort(sortAppearances);
+
       populateGridAndTable(data);
     }
   });
