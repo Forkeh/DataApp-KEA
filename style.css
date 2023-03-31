@@ -151,7 +151,7 @@ button:active {
 /*----------- Character grid styling /*-----------*/
 .char-grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1em;
   margin-left: 2.5rem;
   margin-right: 2.5rem;
@@ -209,7 +209,37 @@ button:active {
   text-shadow: 1px 1px 2px black;
 }
 
-@media (min-width: 600px) {
+@media (max-width: 479px) {
+  #buttons-container {
+    grid-template-columns: 1fr;
+    margin: 1rem auto 1rem auto;
+    width: 10%;
+    min-width: 250px;
+  }
+  .dialog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "dialog-left"
+      "dialog-right"
+      "dialog-bottom";
+  }
+}
+
+@media (min-width: 480px) {
+  .char-grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dialog-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "dialog-left dialog-right"
+    "dialog-bottom dialog-bottom";
+}
+}
+
+@media (min-width: 700px) {
   .char-grid-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -293,10 +323,10 @@ td {
 /*----------- Modal window styling /*-----------*/
 dialog {
   border-radius: 20px;
-  width: 600px;
+  max-width: 600px;
+  width: 85%;
   height: fit-content;
-  max-height: 800px;
-  /* background-color: var(--light-brown); */
+  max-height: 85vh;
   background: linear-gradient(45deg, var(--light-brown), var(--brown));
   box-shadow: 5px 5px 12px black;
 }
@@ -321,13 +351,7 @@ dialog img {
   text-align: center;
 }
 
-.dialog-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "dialog-left dialog-right"
-    "dialog-bottom dialog-bottom";
-}
+
 
 /*----------- Keyframes /*-----------*/
 .open-modal {
