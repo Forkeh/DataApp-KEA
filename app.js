@@ -98,10 +98,17 @@ function showCharacterGrid(character) {
 }
 
 function showModal(character) {
+  const modal = document.querySelector("#dialog-window");
+  
   // Shows modal dialog with built in function
   document.querySelector("dialog").showModal();
+
   // Sends character object to fill in dialog detail
   showModalCharacter(character);
+
+  // Scrolls to top of modal window when opened
+  modal.scrollTop = 0;
+
 }
 
 function showModalCharacter(character) {
